@@ -15,16 +15,15 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<User> getAll() {
+    public List<AuthUser> getAllUsers() {
         return this.jdbcTemplate.query(
-                "select id, name, email from users",
-                (resultSet, rowNum) -> {
-                    User user = new User();
-                    user.setId(resultSet.getInt("id"));
-                    user.setName(resultSet.getString("name"));
-                    user.setEmail(resultSet.getString("email"));
-                    return user;
-                });
+                "select id, username, password from users",
+                (resultSet, rowNum) -> new AuthUser(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password")
+                )
+        );
     }
 
     public int addUser(String username, String password){
