@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.dao.UserDao;
 import org.example.domain.AuthUser;
+import org.example.view.Home;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,12 +39,12 @@ public class App {
         }*/
         /*System.out.println(coach1.getInstruction());*/
 
-        /*SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new Home();
             }
-        });*/
+        });
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
