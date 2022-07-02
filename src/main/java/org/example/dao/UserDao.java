@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.domain.AuthUser;
+import org.example.domain.FlycashLoginUser;
 import org.example.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -13,6 +14,20 @@ public class UserDao {
 
     public UserDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    public List<FlycashLoginUser> getAllFlycashLoginUsers(){
+        return this.jdbcTemplate.query(
+                "select id, email, password, phone, nid, type from loginusers",
+                (resultSet, rowNum) -> new FlycashLoginUser(
+                        resultSet.getInt("id"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("nid"),
+                        resultSet.getString("type")
+                )
+        );
     }
 
     public List<AuthUser> getAllUsers() {
