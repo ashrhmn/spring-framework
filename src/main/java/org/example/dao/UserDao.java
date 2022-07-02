@@ -17,17 +17,17 @@ public class UserDao {
 
     public List<AuthUser> getAllUsers() {
         return this.jdbcTemplate.query(
-                "select id, username, password from users",
+                "select id, email, password from customers",
                 (resultSet, rowNum) -> new AuthUser(
                         resultSet.getInt("id"),
-                        resultSet.getString("username"),
+                        resultSet.getString("email"),
                         resultSet.getString("password")
                 )
         );
     }
 
-    public int addUser(String username, String password){
-        return this.jdbcTemplate.update("insert into users (username,password) values (?,?)",username,password);
+    public int addUser(String email, String password){
+        return this.jdbcTemplate.update("insert into customers (email,password) values (?,?)",email,password);
     }
 
     public String authenticateUser(String username, String password){
@@ -46,10 +46,10 @@ public class UserDao {
 //        return "Login Successful";
         try{
             AuthUser authUser = this.jdbcTemplate.queryForObject(
-                    "select id,username,password from users where username=? and password=?",
+                    "select id,username,password from customers where email=? and password=?",
                     (resultSet,rowNum)-> new AuthUser(
                             resultSet.getInt("id"),
-                            resultSet.getString("username"),
+                            resultSet.getString("email"),
                             resultSet.getString("password")
                     ),
                     username,

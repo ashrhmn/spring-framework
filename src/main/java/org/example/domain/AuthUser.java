@@ -2,15 +2,15 @@ package org.example.domain;
 
 public class AuthUser {
     private int id;
-    private String username;
+    private String email;
     private String password;
 
     public AuthUser() {
     }
 
-    public AuthUser(int id, String username, String password) {
+    public AuthUser(int id, String email, String password) {
         this.id = id;
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
@@ -23,11 +23,11 @@ public class AuthUser {
     }
 
     public String getUsername() {
-        return username;
+        return email;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.email = username;
     }
 
     public String getPassword() {

@@ -39,12 +39,12 @@ public class App {
         }*/
         /*System.out.println(coach1.getInstruction());*/
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Home();
-            }
-        });
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new Home();
+//            }
+//        });
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -53,9 +53,10 @@ public class App {
 
                 JFrame jFrame = new JFrame("Home Page");
                 jFrame.setSize(600, 500);
-                jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jFrame.setVisible(true);
-                LayoutManager layoutManager = new FlowLayout(FlowLayout.LEFT, 0, 20);
+                jFrame.setLocationRelativeTo(null);
+                LayoutManager layoutManager = new FlowLayout(FlowLayout.CENTER, 0, 20);
                 jFrame.setLayout(layoutManager);
 
                 final JTextField usernameField = new JTextField();
